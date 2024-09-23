@@ -112,6 +112,10 @@ class ActivityController extends Controller
      */
     public function destroy(Activity $activity)
     {
-        //
+        // Delete the activity
+        $activity->delete();
+
+        // Redirect to the homepage with a success message
+        return redirect('/')->with('success', 'Activiteit succesvol verwijderd.');
     }
 }
