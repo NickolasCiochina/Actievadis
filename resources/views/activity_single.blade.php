@@ -15,6 +15,8 @@
         </div>
     @endif
 
+    <hr>
+
     <!-- Button to show the registration form -->
     <button id="showFormBtn" class="btn btn-primary mb-3">Schrijf je in voor deze activiteit</button>
 
@@ -35,7 +37,7 @@
         </form>
     </div>
 
-    <hr>
+
 
     <!-- List of registered people -->
     <h2>Ingeschreven personen:</h2>
@@ -48,6 +50,15 @@
             @endforeach
         </ul>
     @endif
+
+    <hr>
+
+    <!-- Delete Activity Form -->
+    <form action="{{ route('activity.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je deze activiteit wilt verwijderen?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Activiteit verwijderen</button>
+    </form>
 </div>
 
 <!-- Inline script to toggle the registration form visibility -->
