@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name'); // Activity name
+            $table->dateTime('date'); // Date and time of the activity
+            $table->timestamps(); // created_at and updated_at columns
         });
     }
 

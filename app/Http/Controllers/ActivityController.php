@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\activity;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -12,7 +12,14 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        //
+        $activities = Activity::all();
+    
+        // Check if activities are being retrieved
+        if ($activities->isEmpty()) {
+            dd('No activities found');
+        }
+    
+        return view('activity_cards', compact('activities'));
     }
 
     /**
@@ -34,7 +41,7 @@ class ActivityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(activity $activity)
+    public function show(Activity $activity)
     {
         //
     }
@@ -42,7 +49,7 @@ class ActivityController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(activity $activity)
+    public function edit(Activity $activity)
     {
         //
     }
@@ -50,7 +57,7 @@ class ActivityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, activity $activity)
+    public function update(Request $request, Activity $activity)
     {
         //
     }
@@ -58,7 +65,7 @@ class ActivityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(activity $activity)
+    public function destroy(Activity $activity)
     {
         //
     }
