@@ -13,11 +13,24 @@ class Activity extends Model
     // The attributes that are mass assignable
     protected $fillable = [
         'name',
+        'location',
+        'food_and_drinks_available',
+        'description',
+        'start_date',
+        'end_date',
+        'cost',
         'date',
     ];
 
+    public function registrations()
+    {
+        return $this->hasMany(Registration::class);
+    }
+
     // The attributes that should be cast to native types
     protected $casts = [
-        'date' => 'date',
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+        'date' => 'datetime',
     ];
 }
