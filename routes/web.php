@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [ActivityController::class, 'index'])->name('activity_cards');
+Route::get('/activity/{activity}', [ActivityController::class, 'show'])->name('activity.show');
+Route::post('/activity/store', [ActivityController::class, 'store'])->name('activity.store');
+Route::post('/activity/{activity}/register', [ActivityController::class, 'register'])->name('activity.register');
