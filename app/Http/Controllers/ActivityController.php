@@ -17,9 +17,9 @@ class ActivityController extends Controller
 
         // Check if activities are being retrieved
         if ($activities->isEmpty()) {
-            dd('No activities found');
+            return view('activity_cards', ['activities' => $activities, 'noActivitiesMessage' => 'Er zijn momenteel geen activiteiten beschikbaar.']);
         }
-
+    
         return view('activity_cards', compact('activities'));
     }
 

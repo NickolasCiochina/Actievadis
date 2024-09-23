@@ -47,22 +47,31 @@
     </div>
 
     <div class="row mt-4">
-        @foreach($activities as $activity)
-            <div class="col-md-4 mb-4">
-                <div class="card h-100">
-                    <div class="card-body" style="border:1px solid black; border-radius: 10%; margin: 20px;">
-                        <h5 class="card-title">
-                            <a href="{{ route('activity.show', $activity->id) }}">
-                                {{ $activity->name }}
-                            </a>
-                        </h5>
-                        <p class="card-text">
-                            {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur
-                        </p>
-                    </div>
+        <!-- Check if there are activities, and if not, display a message -->
+        @if($activities->isEmpty())
+            <div class="col-md-12">
+                <div class="alert alert-info">
+                    Er zijn momenteel geen activiteiten beschikbaar.
                 </div>
             </div>
-        @endforeach
+        @else
+            @foreach($activities as $activity)
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body" style="border:1px solid black; border-radius: 10%; margin: 20px;">
+                            <h5 class="card-title">
+                                <a href="{{ route('activity.show', $activity->id) }}">
+                                    {{ $activity->name }}
+                                </a>
+                            </h5>
+                            <p class="card-text">
+                                {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @endif
     </div>
 </div>
 
@@ -70,10 +79,6 @@
 <script>
     document.getElementById('showFormBtn').addEventListener('click', function() {
         var form = document.getElementById('activityForm');
-        if (form.style.display === 'none') {
-            form.style.display = 'block';
-        } else {
-            form.style.display = 'none';
-        }
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
     });
 </script>
