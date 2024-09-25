@@ -1,18 +1,18 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
     height: 100%;
     font-family: Arial, sans-serif;
 }
 
 .hero {
     position: relative;
-    height: 100vh;
+    height: 60vh;
     background-image: url('https://flowbite.com/docs/images/examples/image-1@2x.jpg');
     background-size: cover;
     background-position: center;
@@ -28,6 +28,7 @@ body, html {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid #f5af00;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,4 +39,51 @@ h1 {
     font-size: 3rem;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+}
+
+.menu {
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #f5af00;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    max-width: 450px;
+    width: 350px;
+    min-width: 150px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+}
+
+.menu li {
+    margin: 10px 0;
+}
+
+.menu a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.menu a:hover {
+    color: #f5af00;
+}
+
+
+.content {
+    padding: 40px;
+    text-align: center;
 }

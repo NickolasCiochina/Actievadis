@@ -13,5 +13,20 @@
         </div>
     </div>
 
+    <div class="menu-container">
+        <div class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Planning</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Over ons</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <p>Rest van content hier.</p>
+    </div>
+
 </body>
 </html>
