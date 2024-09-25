@@ -3,3 +3,18 @@
     margin:0;
     box-sizing: border-box;
 }
+
+header {
+    background-color: #f5af00;
+    max-height: 103px;
+}
+
+ul {
+    display:flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+footer {
+    background-color: gray;
+}
