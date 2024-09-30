@@ -116,6 +116,6 @@ class ActivityController extends Controller
         $activity->delete();
 
         // Redirect to the homepage with a success message
-        return redirect('/')->with('success', 'Activiteit succesvol verwijderd.');
+        return redirect('/activities')->with('success', 'Activiteit succesvol verwijderd.');
     }
 }
