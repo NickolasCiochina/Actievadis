@@ -12,14 +12,16 @@
      <div class="container">
         <!-- navbar -->
          <header>
-            <div class="logo">
-                <a href="/"> <image src="{{ Vite::asset('resources/images/logo_covadis_2016.png') }}" alt="logo"></a>
-            </div>
-            <ul>
-                <li>Home</li>
-                <li>Activiteiten</li>
-                <li>Item3</li>
-            </ul>
+            <nav>
+                <div class="logo">
+                    <a href="/"> <image src="{{ Vite::asset('resources/images/logo_covadis_2016.png') }}" alt="logo"></a>
+                </div>
+                <ul>
+                    <li>Home</li>
+                    <li>Activiteiten</li>
+                    <li>Item3</li>
+                </ul>
+            </nav>
          </header>
 
          @yield('content')
