@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WelcomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +25,4 @@ Route::get('/activity/{activity}', [ActivityController::class, 'show'])->name('a
 Route::post('/activity/store', [ActivityController::class, 'store'])->name('activity.store');
 Route::post('/activity/{activity}/register', [ActivityController::class, 'register'])->name('activity.register');
 Route::delete('/activity/{activity}', [ActivityController::class, 'destroy'])->name('activity.destroy');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
