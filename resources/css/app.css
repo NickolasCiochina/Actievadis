@@ -45,7 +45,8 @@ footer {
 footer ul {
     list-style: none;
     display: flex;
-    justify-content: center;
+    min-height: 50px;
+    align-items: center;
 }
 
 footer li {
