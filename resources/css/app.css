@@ -12,7 +12,7 @@ body {
 header {
     background-color: #f5af00;
     padding: 10px 0;
-    border-bottom: 3px solid #d48806; /* Add a bottom border to the header */
+    border-bottom: 3px solid #d48806;
 }
 
 nav {
@@ -38,8 +38,8 @@ ul {
 footer {
     background-color: gray;
     padding: 10px;
-    border-top: 3px solid #a0a0a0; /* Add a top border to the footer */
-    text-align: center; /* Center the footer content */
+    border-top: 3px solid #a0a0a0; 
+    text-align: center;
 }
 
 footer ul {
@@ -50,5 +50,5 @@ footer ul {
 }
 
 footer li {
-    margin: 0 15px; /* Add space between footer items */
+    margin: 0 15px;
 }
