@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 
@@ -15,5 +16,13 @@ use App\Http\Controllers\WelcomeController;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/activities', [ActivityController::class, 'index'])->name('activity_cards');
+Route::get('/activity/{activity}', [ActivityController::class, 'show'])->name('activity.show');
+Route::post('/activity/store', [ActivityController::class, 'store'])->name('activity.store');
+Route::post('/activity/{activity}/register', [ActivityController::class, 'register'])->name('activity.register');
+Route::delete('/activity/{activity}', [ActivityController::class, 'destroy'])->name('activity.destroy');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
