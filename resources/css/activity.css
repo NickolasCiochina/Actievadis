@@ -1,0 +1,262 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #f5af00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+.btn:hover {
+    background-color: #f5af00;
+}
+
+/* Card Styling */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.card-title a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.card-title a:hover {
+    color: #f5af00;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Grid layout for cards */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.col-md-4 {
+    flex: 0 1 calc(33.333% - 20px); /* 3 cards per row with space between */
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 1 calc(50% - 20px); /* 2 cards per row on tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .col-md-4 {
+        flex: 0 1 calc(100% - 20px); /* 1 card per row on mobile */
+    }
+}
+
+/* Form visibility toggle */
+#activityForm {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* Alerts */
+.alert {
+    padding: 15px;
+    background-color: #f8d7da;
+    border-radius: 5px;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Activity Single Page Styling */
+.activity-details p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+strong {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 10px;
+    background-color: #e9ecef;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+/* activity form*/
+
+#activityForm, #registrationForm {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#activityForm h2, #registrationForm h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#activityForm .form-group, #registrationForm  {
+    margin-bottom: 20px;
+}
+
+#activityForm label, #registrationForm  {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#activityForm input, #activityForm textarea, #activityForm select,
+ #registrationForm input, #registrationForm textarea, #registrationForm select {
+    font-size: 1rem;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#activityForm input:focus, #activityForm textarea:focus, #activityForm select:focus,
+#registrationForm input:focus, #registrationForm textarea:focus, #registrationForm select:focus {
+    border-color: #f5af00;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+#activityForm button, #registrationForm button  {
+    background-color: #f5af00;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#activityForm button:hover, #registrationForm button:hover {
+    background-color: #d49800;
+}
+
+@media (max-width: 768px) {
+    #activityForm {
+        padding: 20px;
+    }
+}
+
+/* Detail Info Styling */
+
+.detailInfo {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.detailInfo h1 {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.detailInfo p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.detailInfo strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.detailInfo p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .detailInfo {
+        padding: 20px;
+    }
+
+    .detailInfo h1 {
+        font-size: 1.5rem;
+    }
+
+    .detailInfo p {
+        font-size: 1rem;
+    }
+}
+

@@ -1,13 +1,18 @@
 <div class="container">
+    @vite(['resources/css/activity.css', 'resources/js/activity.js'])
     <!-- Activity Details Section -->
     <h1>{{ $activity->name }}</h1>
+
+    <div class="detailInfo">
     <p><strong>Locatie:</strong> {{ $activity->location }}</p>
     <p><strong>Beschikbaarheid van eten en drinken:</strong> {{ $activity->food_and_drinks_available ? 'Ja' : 'Nee' }}</p>
     <p><strong>Beschrijving:</strong> {{ $activity->description }}</p>
     <p><strong>Startdatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
     <p><strong>Einddatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->end_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
     <p><strong>Kosten:</strong> &euro;{{ number_format($activity->cost, 2, ',', '.') }}</p>
-    
+    </div>
+
+
     <!-- Display success message if registration is successful -->
     @if (session('success'))
         <div class="alert alert-success">
@@ -15,7 +20,7 @@
         </div>
     @endif
 
-    <hr>
+
 
     <!-- Button to show the registration form -->
     <button id="showFormBtn" class="btn btn-primary mb-3">Schrijf je in voor deze activiteit</button>
@@ -51,7 +56,7 @@
         </ul>
     @endif
 
-    <hr>
+
 
     <!-- Delete Activity Form -->
     <form action="{{ route('activity.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je deze activiteit wilt verwijderen?');">
