@@ -12,3 +12,4 @@ class WelcomeController extends BaseController
         return view('index');
     }
 }
+

@@ -1,0 +1,70 @@
+<div class="container">
+    <!-- Activity Details Section -->
+    <h1>{{ $activity->name }}</h1>
+    <p><strong>Locatie:</strong> {{ $activity->location }}</p>
+    <p><strong>Beschikbaarheid van eten en drinken:</strong> {{ $activity->food_and_drinks_available ? 'Ja' : 'Nee' }}</p>
+    <p><strong>Beschrijving:</strong> {{ $activity->description }}</p>
+    <p><strong>Startdatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
+    <p><strong>Einddatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->end_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
+    <p><strong>Kosten:</strong> &euro;{{ number_format($activity->cost, 2, ',', '.') }}</p>
+    
+    <!-- Display success message if registration is successful -->
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <hr>
+
+    <!-- Button to show the registration form -->
+    <button id="showFormBtn" class="btn btn-primary mb-3">Schrijf je in voor deze activiteit</button>
+
+    <!-- Registration form, hidden by default -->
+    <div id="registrationForm" style="display: none;">
+        <h2>Inschrijven voor activiteit</h2>
+        <form action="{{ route('activity.register', $activity->id) }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="name">Naam:</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="surname">Achternaam:</label>
+                <input type="text" name="surname" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Inschrijven</button>
+        </form>
+    </div>
+
+
+
+    <!-- List of registered people -->
+    <h2>Ingeschreven personen:</h2>
+    @if($registrations->isEmpty())
+        <p>Er zijn nog geen inschrijvingen voor deze activiteit.</p>
+    @else
+        <ul>
+            @foreach($registrations as $registration)
+                <li>{{ $registration->name }} {{ $registration->surname }}</li>
+            @endforeach
+        </ul>
+    @endif
+
+    <hr>
+
+    <!-- Delete Activity Form -->
+    <form action="{{ route('activity.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je deze activiteit wilt verwijderen?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger">Activiteit verwijderen</button>
+    </form>
+</div>
+
+<!-- Inline script to toggle the registration form visibility -->
+<script>
+    document.getElementById('showFormBtn').addEventListener('click', function() {
+        var form = document.getElementById('registrationForm');
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    });
+</script>
