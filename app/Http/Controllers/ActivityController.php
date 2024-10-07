@@ -45,7 +45,7 @@ class ActivityController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'cost' => 'required|numeric|min:0',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
         // Additional data array to store other fields
@@ -53,7 +53,7 @@ class ActivityController extends Controller
     
         // Handle image upload
         if ($request->hasFile('image')) {
-            // Store the image in the 'public/images' directory and get the path
+            // Store the image in 'public/images' directory and get the path
             $imagePath = $request->file('image')->store('images', 'public');
             $additionalData['image'] = $imagePath; // Add the image path to the new array
         }
