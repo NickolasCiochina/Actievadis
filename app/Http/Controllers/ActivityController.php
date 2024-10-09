@@ -19,7 +19,7 @@ class ActivityController extends Controller
         if ($activities->isEmpty()) {
             return view('activity_cards', ['activities' => $activities, 'noActivitiesMessage' => 'Er zijn momenteel geen activiteiten beschikbaar.']);
         }
-    
+
         return view('activity_cards', compact('activities'));
     }
 
@@ -116,6 +116,6 @@ class ActivityController extends Controller
         $activity->delete();
 
         // Redirect to the homepage with a success message
-        return redirect('/activities')->with('success', 'Activiteit succesvol verwijderd.');
+        return redirect('/')->with('success', 'Activiteit succesvol verwijderd.');
     }
 }

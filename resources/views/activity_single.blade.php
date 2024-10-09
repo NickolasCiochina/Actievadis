@@ -3,6 +3,7 @@
     @vite(['resources/css/activity.css', 'resources/js/activity.js'])
     <!-- Activity Details Section -->
     <h1>{{ $activity->name }}</h1>
+    <button id="showFormBtn" class="btn btn-primary mb-3" onclick="window.history.back()">Terug</button>
 
     <div class="detailInfo">
     <p><strong>Locatie:</strong> {{ $activity->location }}</p>
