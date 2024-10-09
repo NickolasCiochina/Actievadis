@@ -17,7 +17,7 @@
         <div class="menu">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Planning</a></li>
+                <li><a href="/activities">Planning</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="#">Over ons</a></li>
             </ul>
