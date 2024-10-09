@@ -1,3 +1,4 @@
+
 <div class="container">
     @vite(['resources/css/activity.css', 'resources/js/activity.js'])
     <!-- Activity Details Section -->

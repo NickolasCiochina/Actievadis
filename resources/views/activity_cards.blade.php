@@ -1,9 +1,11 @@
+
 <div class="container">
 @vite(['resources/css/activity.css', 'resources/js/activity.js'])
     <div class="row">
         <div class="col-md-12">
             <!-- Button to trigger the form visibility -->
             <button id="showFormBtn" class="btn btn-primary mb-3">Voeg een activiteit toe</button>
+            <button id="showFormBtn" class="btn btn-primary mb-3" onclick="window.history.back()">Terug</button>
 
             <!-- Form is hidden by default -->
             <div id="activityForm" style="display: none;" class="p-4 rounded bg-light shadow">

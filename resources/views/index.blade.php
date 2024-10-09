@@ -1,3 +1,5 @@
+@extends('layout')
+@section('content')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -17,7 +19,7 @@
         <div class="menu">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Planning</a></li>
+                <li><a href="/activities">Activiteiten</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="#">Over ons</a></li>
             </ul>
@@ -25,8 +27,9 @@
     </div>
 
     <div class="content">
-        <p>Rest van content hier.</p>
+        <!-- mogelijke content toevoegingen -->
     </div>
 
 </body>
 </html>
+@endsection
