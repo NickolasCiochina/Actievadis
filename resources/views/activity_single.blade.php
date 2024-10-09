@@ -3,6 +3,12 @@
     @vite(['resources/css/activity.css', 'resources/js/activity.js'])
     <!-- Activity Details Section -->
     <h1>{{ $activity->name }}</h1>
+
+    <!-- Display the image of the activity -->
+    @if($activity->image)
+        <img src="{{ asset('storage/' . $activity->image) }}" alt="{{ $activity->name }}" style="max-width: 50%; height: auto; margin-bottom: 20px;">
+    @endif
+
     <button id="showFormBtn" class="btn btn-primary mb-3" onclick="window.history.back()">Terug</button>
 
     <div class="detailInfo">
@@ -43,8 +49,6 @@
             <button type="submit" class="btn btn-success">Inschrijven</button>
         </form>
     </div>
-
-
 
     <!-- List of registered people -->
     <h2>Ingeschreven personen:</h2>
