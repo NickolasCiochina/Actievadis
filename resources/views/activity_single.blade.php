@@ -30,8 +30,6 @@
         </div>
     @endif
 
-
-
     <!-- Button to show the registration form -->
     <button id="showFormBtn" class="btn btn-primary mb-3">Schrijf je in voor deze activiteit</button>
 
@@ -64,8 +62,6 @@
         </ul>
     @endif
 
-
-
     <!-- Delete Activity Form -->
     <form action="{{ route('activity.destroy', $activity->id) }}" method="POST" onsubmit="return confirm('Weet je zeker dat je deze activiteit wilt verwijderen?');">
         @csrf
@@ -84,26 +80,28 @@
     document.getElementById('shareBtn').addEventListener('click', function() {
         const activityUrl = "{{ url()->current() }}";  // Get the current URL of the activity
         const activityTitle = "{{ $activity->name }}";  // Get the activity name
-        
-        if (navigator.share) {
-            navigator.share({
-                title: activityTitle,
-                url: activityUrl,
-                text: `Bekijk deze activiteit: ${activityTitle}`
-            }).then(() => {
-                console.log('Activity link shared successfully.');
-            }).catch(err => {
-                console.error('Error sharing the activity link:', err);
-            });
-        } else {
-            // Fallback for browsers that don't support the Web Share API
+        const activityLocation = "{{ $activity->location }}";  // Get the location
+        const foodAndDrinks = "{{ $activity->food_and_drinks_available ? 'Ja' : 'Nee' }}";  // Food and Drinks availability
+        const activityDescription = "{{ $activity->description }}";  // Activity description
+        const startDate = "{{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur";  // Start date
+        const endDate = "{{ \Carbon\Carbon::parse($activity->end_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur";  // End date
+        const cost = "€{{ number_format($activity->cost, 2, ',', '.') }}";  // Activity cost
+
+        const activityDetails = `
+            Locatie: ${activityLocation}
+            Eten en drinken beschikbaar: ${foodAndDrinks}
+            Beschrijving: ${activityDescription}
+            Startdatum en -tijd: ${startDate}
+            Einddatum en -tijd: ${endDate}
+            Kosten: ${cost}`;
+
             const textArea = document.createElement('textarea');
-            textArea.value = activityUrl;
+            textArea.value = `${activityTitle}\n\n${activityDetails}\n\nLink: ${activityUrl}`;
             document.body.appendChild(textArea);
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            alert('De link is gekopieerd naar het klembord.');
-        }
+            alert('De activiteit beschrijving is gekopieerd naar het klembord!');
     });
+        
 </script>

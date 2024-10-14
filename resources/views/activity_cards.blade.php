@@ -88,7 +88,7 @@
         @endif
     </div>
 </div>
-@endsection
+
 
 <!-- Inline Script to toggle the form visibility -->
 <script>
