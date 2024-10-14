@@ -55,7 +55,7 @@
                         <input type="file" name="image" class="form-control">
                     </div>
 
-                    <!-- Dropdown for Privéactiviteit -->
+                    <!-- Dropdown for Privéactiviteit binnen Covadis -->
                     <div class="form-group mb-3">
                         <label for="is_for_covadis_members">Privéactiviteit binnen Covadis-leden:</label>
                         <select name="is_for_covadis_members" id="is_for_covadis_members" class="form-control" required>
@@ -74,7 +74,7 @@
         @if ($activities->isEmpty())
             <div class="col-md-12">
                 <div class="alert alert-info">
-                    Er zijn momenteel geen activiteiten beschikbaar.
+                    Er zijn momenteel geen activiteiten beschikbaar voor Covadis-leden.
                 </div>
             </div>
         @else
