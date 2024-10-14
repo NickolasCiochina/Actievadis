@@ -89,10 +89,10 @@
 
         const activityDetails = `
             Locatie: ${activityLocation}
-            Eten en drinken beschikbaar: ${foodAndDrinks}
+            Eten&Drinken: ${foodAndDrinks}
             Beschrijving: ${activityDescription}
-            Startdatum en -tijd: ${startDate}
-            Einddatum en -tijd: ${endDate}
+            Start: ${startDate}
+            Eind: ${endDate}
             Kosten: ${cost}`;
 
             const textArea = document.createElement('textarea');
