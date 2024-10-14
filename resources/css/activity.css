@@ -39,15 +39,31 @@ h1, h2 {
 
 /* Card Styling */
 .card {
-    background-color: white;
+    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s ease-in-out;
+    min-height: 250px;
 }
 
 .card:hover {
     transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-placeholder {
+    display: block;
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+}
+
+.card-img-top {
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
 }
 
 .card-body {
@@ -68,13 +84,20 @@ h1, h2 {
     transition: color 0.3s;
 }
 
-.card-title a:hover {
-    color: #f5af00;
-}
-
 .card-text {
     font-size: 1rem;
     color: #666;
+}
+
+.cardLink a, h5, .card-img-top, .card-body{
+    color: black;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.cardlink a:hover, h5:hover{
+    color: #f5af00;
+    transition: color 0.3s;
 }
 
 /* Grid layout for cards */

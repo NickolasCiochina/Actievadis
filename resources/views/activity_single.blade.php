@@ -20,7 +20,6 @@
     <p><strong>Kosten:</strong> &euro;{{ number_format($activity->cost, 2, ',', '.') }}</p>
     </div>
 
-
     <!-- Display success message if registration is successful -->
     @if (session('success'))
         <div class="alert alert-success">
