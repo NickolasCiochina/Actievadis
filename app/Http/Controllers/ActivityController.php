@@ -41,7 +41,7 @@ class ActivityController extends Controller
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'food_and_drinks_available' => 'required|boolean',
-            'description' => 'required|string',
+            'description' => 'nullable|string',
             'start_date' => 'required|date|after:now', // Start date cannot be in the past
             'end_date' => 'required|date|after:start_date', // End date should be after start date
             'cost' => 'required|numeric|min:0',

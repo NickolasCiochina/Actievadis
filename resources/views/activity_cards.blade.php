@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="description">Beschrijving van de activiteit:</label>
-                        <textarea name="description" class="form-control" required></textarea>
+                        <textarea name="description" class="form-control"></textarea>
                     </div>
                     <div class="form-group mb-3">
                         <label for="min_participants">Minimum aantal deelnemers:</label>
