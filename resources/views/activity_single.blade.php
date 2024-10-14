@@ -1,6 +1,6 @@
 
 <div class="container">
-    @vite(['resources/css/activity.css', 'resources/js/activity.js'])
+    @vite(['resources/css/activity.css'])
     <!-- Activity Details Section -->
     <h1>{{ $activity->name }}</h1>
 

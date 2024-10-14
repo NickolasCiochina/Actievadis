@@ -1,6 +1,6 @@
 
 <div class="container">
-@vite(['resources/css/activity.css', 'resources/js/activity.js'])
+@vite(['resources/css/activity.css'])
     <div class="row">
         <div class="col-md-12">
             <!-- Button to trigger the form visibility -->
