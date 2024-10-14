@@ -19,7 +19,7 @@ class ActivityController extends Controller
         if ($activities->isEmpty()) {
             return view('activity_cards', ['activities' => $activities, 'noActivitiesMessage' => 'Er zijn momenteel geen activiteiten beschikbaar.']);
         }
-    
+
         return view('activity_cards', compact('activities'));
     }
 
@@ -45,17 +45,32 @@ class ActivityController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date|after_or_equal:start_date',
             'cost' => 'required|numeric|min:0',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        // Add 'date' to the validated data, copying the value from 'start_date'
-        $validated['date'] = $validated['start_date'];
-
-        // Create a new activity using the validated data
-        Activity::create($validated);
-
+    
+        // Additional data array to store other fields
+        $additionalData = [];
+    
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            // Store the image in 'public/images' directory and get the path
+            $imagePath = $request->file('image')->store('images', 'public');
+            $additionalData['image'] = $imagePath; // Add the image path to the new array
+        }
+    
+        // Add 'date' to the additional data array, copying the value from 'start_date'
+        $additionalData['date'] = $validated['start_date'];
+    
+        // Merge $validated and $additionalData into one array
+        $finalData = array_merge($validated, $additionalData);
+    
+        // Create a new activity using the merged data
+        Activity::create($finalData);
+    
         // Redirect back to the activity list page
         return redirect()->route('activity_cards')->with('success', 'Activiteit succesvol toegevoegd');
     }
+    
 
     /**
      * Display the specified resource.

@@ -1,6 +1,12 @@
 <div class="container">
     <!-- Activity Details Section -->
     <h1>{{ $activity->name }}</h1>
+
+    <!-- Display the image of the activity -->
+    @if($activity->image)
+        <img src="{{ asset('storage/' . $activity->image) }}" alt="{{ $activity->name }}" style="max-width: 50%; height: auto; margin-bottom: 20px;">
+    @endif
+
     <p><strong>Locatie:</strong> {{ $activity->location }}</p>
     <p><strong>Beschikbaarheid van eten en drinken:</strong> {{ $activity->food_and_drinks_available ? 'Ja' : 'Nee' }}</p>
     <p><strong>Beschrijving:</strong> {{ $activity->description }}</p>
@@ -36,8 +42,6 @@
             <button type="submit" class="btn btn-success">Inschrijven</button>
         </form>
     </div>
-
-
 
     <!-- List of registered people -->
     <h2>Ingeschreven personen:</h2>

@@ -10,7 +10,8 @@
             <!-- Form is hidden by default -->
             <div id="activityForm" style="display: none;" class="p-4 rounded bg-light shadow">
                 <h2>Nieuwe activiteit toevoegen</h2>
-                <form action="{{ route('activity.store') }}" method="POST">
+                <!-- Make sure enctype="multipart/form-data" is added to handle file uploads -->
+                <form action="{{ route('activity.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mb-3">
                         <label for="name">Naam van de activiteit:</label>
@@ -41,7 +42,11 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="cost">Kosten:</label>
-                        <input type="number" step="0.01" name="cost" class="form-control" required>
+                        <input type="number" step="0.01" name="cost" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Afbeelding van de activiteit:</label>
+                        <input type="file" name="image" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-success">Activiteit Toevoegen</button>
                 </form>
@@ -51,14 +56,14 @@
 
     <div class="row mt-4">
         <!-- Check if there are activities, and if not, display a message -->
-        @if($activities->isEmpty())
+        @if ($activities->isEmpty())
             <div class="col-md-12">
                 <div class="alert alert-info">
                     Er zijn momenteel geen activiteiten beschikbaar.
                 </div>
             </div>
         @else
-            @foreach($activities as $activity)
+            @foreach ($activities as $activity)
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body">
@@ -67,8 +72,14 @@
                                     {{ $activity->name }}
                                 </a>
                             </h5>
+                            <!-- Display the activity image if available -->
+                            @if ($activity->image)
+                                <img src="{{ asset('storage/' . $activity->image) }}" class="card-img-top"
+                                    alt="{{ $activity->name }}" style="max-height: 200px; object-fit: cover;">
+                            @endif
                             <p class="card-text">
-                                {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur
+                                {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }}
+                                uur
                             </p>
                         </div>
                     </div>
