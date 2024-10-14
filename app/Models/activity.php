@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'activities';
 
     // The attributes that are mass assignable
@@ -20,7 +20,9 @@ class Activity extends Model
         'end_date',
         'cost',
         'date',
-        'image',  // Add the 'image' field here
+        'image',
+        'min_participants',
+        'max_participants',
     ];
 
     public function registrations()

@@ -18,6 +18,8 @@
         <p><strong>Startdatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
         <p><strong>Einddatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->end_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
         <p><strong>Kosten:</strong> &euro;{{ number_format($activity->cost, 2, ',', '.') }}</p>
+        <p><strong>Minimum aantal deelnemers:</strong> {{ $activity->min_participants }}</p>
+        <p><strong>Maximum aantal deelnemers:</strong> {{ $activity->max_participants }}</p>
     </div>
 
     <!-- Display success message if registration is successful -->

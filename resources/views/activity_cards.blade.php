@@ -1,11 +1,9 @@
-
 <div class="container">
-@vite(['resources/css/activity.css'])
+    @vite(['resources/css/activity.css'])
     <div class="row">
         <div class="col-md-12">
             <!-- Button to trigger the form visibility -->
             <button id="showFormBtn" class="btn btn-primary mb-3">Voeg een activiteit toe</button>
-
 
             <!-- Form is hidden by default -->
             <div id="activityForm" style="display: none;" class="p-4 rounded bg-light shadow">
@@ -31,6 +29,14 @@
                     <div class="form-group mb-3">
                         <label for="description">Beschrijving van de activiteit:</label>
                         <textarea name="description" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="min_participants">Minimum aantal deelnemers:</label>
+                        <input type="number" name="min_participants" class="form-control" value="2" min="2" max="1000" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="max_participants">Maximum aantal deelnemers:</label>
+                        <input type="number" name="max_participants" class="form-control" value="1000" min="2" max="1000" required>
                     </div>
                     <div class="form-group mb-3">
                         <label for="start_date">Datum en tijdstip van aanvang:</label>
@@ -94,5 +100,21 @@
     document.getElementById('showFormBtn').addEventListener('click', function() {
         var form = document.getElementById('activityForm');
         form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // Validate date and time
+    document.querySelector('form').addEventListener('submit', function(event) {
+        const startDate = new Date(document.querySelector('input[name="start_date"]').value);
+        const endDate = new Date(document.querySelector('input[name="end_date"]').value);
+        const now = new Date();
+
+        // Ensure start date is not in the past and is at least 1 minute before the end date
+        if (startDate < now) {
+            event.preventDefault();
+            alert('De startdatum mag niet in het verleden liggen.');
+        } else if (startDate >= endDate) {
+            event.preventDefault();
+            alert('De startdatum moet minimaal 1 minuut vóór de einddatum liggen.');
+        }
     });
 </script>

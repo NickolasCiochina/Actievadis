@@ -42,9 +42,11 @@ class ActivityController extends Controller
             'location' => 'required|string|max:255',
             'food_and_drinks_available' => 'required|boolean',
             'description' => 'required|string',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
+            'start_date' => 'required|date|after:now', // Start date cannot be in the past
+            'end_date' => 'required|date|after:start_date', // End date should be after start date
             'cost' => 'required|numeric|min:0',
+            'min_participants' => 'required|integer|min:2|max:1000',
+            'max_participants' => 'required|integer|min:2|max:1000',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
@@ -53,9 +55,9 @@ class ActivityController extends Controller
     
         // Handle image upload
         if ($request->hasFile('image')) {
-            // Store the image in 'public/images' directory and get the path
+            // Store the image in the 'public/images' directory and get the path
             $imagePath = $request->file('image')->store('images', 'public');
-            $additionalData['image'] = $imagePath; // Add the image path to the new array
+            $additionalData['image'] = $imagePath;
         }
     
         // Add 'date' to the additional data array, copying the value from 'start_date'
@@ -70,6 +72,7 @@ class ActivityController extends Controller
         // Redirect back to the activity list page
         return redirect()->route('activity_cards')->with('success', 'Activiteit succesvol toegevoegd');
     }
+    
     
 
     /**
