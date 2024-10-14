@@ -20,6 +20,8 @@
     <p><strong>Kosten:</strong> &euro;{{ number_format($activity->cost, 2, ',', '.') }}</p>
     </div>
 
+    <!-- Share Button -->
+    <button id="shareBtn" class="btn btn-secondary mb-3">Deel deze activiteit</button>
 
     <!-- Display success message if registration is successful -->
     @if (session('success'))
@@ -77,5 +79,31 @@
     document.getElementById('showFormBtn').addEventListener('click', function() {
         var form = document.getElementById('registrationForm');
         form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    });
+
+    document.getElementById('shareBtn').addEventListener('click', function() {
+        const activityUrl = "{{ url()->current() }}";  // Get the current URL of the activity
+        const activityTitle = "{{ $activity->name }}";  // Get the activity name
+        
+        if (navigator.share) {
+            navigator.share({
+                title: activityTitle,
+                url: activityUrl,
+                text: `Bekijk deze activiteit: ${activityTitle}`
+            }).then(() => {
+                console.log('Activity link shared successfully.');
+            }).catch(err => {
+                console.error('Error sharing the activity link:', err);
+            });
+        } else {
+            // Fallback for browsers that don't support the Web Share API
+            const textArea = document.createElement('textarea');
+            textArea.value = activityUrl;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('De link is gekopieerd naar het klembord.');
+        }
     });
 </script>
