@@ -14,18 +14,18 @@
     <div class="detailInfo">
         <p><strong>Locatie:</strong> {{ $activity->location }}</p>
         <p><strong>Beschikbaarheid van eten en drinken:</strong> {{ $activity->food_and_drinks_available ? 'Ja' : 'Nee' }}</p>
-        
+
         <!-- Only show description if it exists -->
         @if(!empty($activity->description))
             <p><strong>Beschrijving:</strong> {{ $activity->description }}</p>
         @endif
-        
+
         <p><strong>Startdatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
         <p><strong>Einddatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->end_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
         <p><strong>Kosten:</strong> &euro;{{ number_format($activity->cost, 2, ',', '.') }}</p>
         <p><strong>Minimum aantal deelnemers:</strong> {{ $activity->min_participants }}</p>
         <p><strong>Maximum aantal deelnemers:</strong> {{ $activity->max_participants }}</p>
-        <p><strong>Voor wie:</strong> 
+        <p><strong>Voor wie:</strong>
             {{ $activity->is_for_covadis_members ? 'Alleen voor Covadis-leden' : 'Iedereen' }}
         </p>
     </div>
@@ -129,5 +129,5 @@
             alert('De activiteit beschrijving is gekopieerd naar het klembord!');
         }
     });
-        
+
 </script>
