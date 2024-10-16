@@ -103,6 +103,8 @@
     </div>
 </div>
 
+<!-- Inline Script to toggle the form visibility -->
+
 <script>
     document.getElementById('showFormBtn').addEventListener('click', function() {
         var form = document.getElementById('activityForm');

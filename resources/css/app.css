@@ -13,6 +13,8 @@ header {
     background-color: #f5af00;
     padding: 10px 0;
     border-bottom: 3px solid #d48806;
+    width: 100vw; /* Full width */
+    margin-left: calc(-50vw + 50%); /* Center the full-width header */
 }
 
 nav {
@@ -40,6 +42,8 @@ footer {
     padding: 10px;
     border-top: 3px solid #a0a0a0;
     text-align: center;
+    width: 100vw; /* Full width */
+    margin-left: calc(-50vw + 50%); /* Center the full-width footer */
 }
 
 footer ul {

@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- container -->
-     <div class="container">
+     <div class="layoutContainer">
         <!-- navbar -->
          <header>
             <nav>
