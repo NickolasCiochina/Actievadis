@@ -26,3 +26,5 @@ Route::post('/activity/store', [ActivityController::class, 'store'])->name('acti
 Route::post('/activity/{activity}/register', [ActivityController::class, 'register'])->name('activity.register');
 Route::delete('/activity/{activity}', [ActivityController::class, 'destroy'])->name('activity.destroy');
 
+Route::get('/covadis-activities', [ActivityController::class, 'covadisActivities'])->name('activity_cards_covadis');
+

@@ -23,6 +23,20 @@ class ActivityController extends Controller
         return view('activity_cards', compact('activities'));
     }
 
+    public function covadisActivities()
+    {
+        // Fetch only activities that are for Covadis members
+        $activities = Activity::where('is_for_covadis_members', 1)->get();
+
+        // Check if there are activities
+        if ($activities->isEmpty()) {
+            return view('activity_cards_covadis', ['activities' => $activities, 'noActivitiesMessage' => 'Er zijn momenteel geen activiteiten beschikbaar voor Covadis-leden.']);
+        }
+
+        return view('activity_cards_covadis', compact('activities'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -41,36 +55,40 @@ class ActivityController extends Controller
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'food_and_drinks_available' => 'required|boolean',
-            'description' => 'required|string',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
+            'description' => 'nullable|string',
+            'start_date' => 'required|date|after:now', // Start date cannot be in the past
+            'end_date' => 'required|date|after:start_date', // End date should be after start date
             'cost' => 'required|numeric|min:0',
+            'min_participants' => 'required|integer|min:2|max:1000',
+            'max_participants' => 'required|integer|min:2|max:1000',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'is_for_covadis_members' => 'boolean',
         ]);
-    
+
         // Additional data array to store other fields
         $additionalData = [];
-    
+
         // Handle image upload
         if ($request->hasFile('image')) {
-            // Store the image in 'public/images' directory and get the path
+            // Store the image in the 'public/images' directory and get the path
             $imagePath = $request->file('image')->store('images', 'public');
-            $additionalData['image'] = $imagePath; // Add the image path to the new array
+            $additionalData['image'] = $imagePath;
         }
-    
+
         // Add 'date' to the additional data array, copying the value from 'start_date'
         $additionalData['date'] = $validated['start_date'];
-    
+
         // Merge $validated and $additionalData into one array
         $finalData = array_merge($validated, $additionalData);
-    
+
         // Create a new activity using the merged data
         Activity::create($finalData);
-    
+
         // Redirect back to the activity list page
         return redirect()->route('activity_cards')->with('success', 'Activiteit succesvol toegevoegd');
     }
-    
+
+
 
     /**
      * Display the specified resource.

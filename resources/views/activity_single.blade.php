@@ -1,4 +1,3 @@
-
 <div class="container">
     @vite(['resources/css/activity.css'])
     <!-- Activity Details Section -->
@@ -9,15 +8,26 @@
         <img src="{{ asset('storage/' . $activity->image) }}" alt="{{ $activity->name }}" style="max-width: 50%; height: auto; margin-bottom: 20px;">
     @endif
 
-    <button id="showFormBtn" class="btn btn-primary mb-3" onclick="window.history.back()">Terug</button>
+    <!-- Back Button -->
+    <button id="backBtn" class="btn btn-primary mb-3" onclick="window.history.back()">Terug</button>
 
     <div class="detailInfo">
-    <p><strong>Locatie:</strong> {{ $activity->location }}</p>
-    <p><strong>Beschikbaarheid van eten en drinken:</strong> {{ $activity->food_and_drinks_available ? 'Ja' : 'Nee' }}</p>
-    <p><strong>Beschrijving:</strong> {{ $activity->description }}</p>
-    <p><strong>Startdatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
-    <p><strong>Einddatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->end_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
-    <p><strong>Kosten:</strong> &euro;{{ number_format($activity->cost, 2, ',', '.') }}</p>
+        <p><strong>Locatie:</strong> {{ $activity->location }}</p>
+        <p><strong>Beschikbaarheid van eten en drinken:</strong> {{ $activity->food_and_drinks_available ? 'Ja' : 'Nee' }}</p>
+        
+        <!-- Only show description if it exists -->
+        @if(!empty($activity->description))
+            <p><strong>Beschrijving:</strong> {{ $activity->description }}</p>
+        @endif
+        
+        <p><strong>Startdatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
+        <p><strong>Einddatum en -tijd:</strong> {{ \Carbon\Carbon::parse($activity->end_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur</p>
+        <p><strong>Kosten:</strong> &euro;{{ number_format($activity->cost, 2, ',', '.') }}</p>
+        <p><strong>Minimum aantal deelnemers:</strong> {{ $activity->min_participants }}</p>
+        <p><strong>Maximum aantal deelnemers:</strong> {{ $activity->max_participants }}</p>
+        <p><strong>Voor wie:</strong> 
+            {{ $activity->is_for_covadis_members ? 'Alleen voor Covadis-leden' : 'Iedereen' }}
+        </p>
     </div>
 
     <!-- Share Button -->
@@ -31,7 +41,7 @@
     @endif
 
     <!-- Button to show the registration form -->
-    <button id="showFormBtn" class="btn btn-primary mb-3">Schrijf je in voor deze activiteit</button>
+    <button id="showRegistrationFormBtn" class="btn btn-primary mb-3">Schrijf je in voor deze activiteit</button>
 
     <!-- Registration form, hidden by default -->
     <div id="registrationForm" style="display: none;">
@@ -72,7 +82,7 @@
 
 <!-- Inline script to toggle the registration form visibility -->
 <script>
-    document.getElementById('showFormBtn').addEventListener('click', function() {
+    document.getElementById('showRegistrationFormBtn').addEventListener('click', function() {
         var form = document.getElementById('registrationForm');
         form.style.display = form.style.display === 'none' ? 'block' : 'none';
     });
