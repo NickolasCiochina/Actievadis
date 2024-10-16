@@ -77,7 +77,9 @@
         form.style.display = form.style.display === 'none' ? 'block' : 'none';
     });
 
+    // Script to make sharing a link with text functional
     document.getElementById('shareBtn').addEventListener('click', function() {
+        // Carbon is used to make date formatting easier. Starts off by converting database data.
         const activityUrl = "{{ url()->current() }}";  // Get the current URL of the activity
         const activityTitle = "{{ $activity->name }}";  // Get the activity name
         const activityLocation = "{{ $activity->location }}";  // Get the location
@@ -88,13 +90,26 @@
         const cost = "€{{ number_format($activity->cost, 2, ',', '.') }}";  // Activity cost
 
         const activityDetails = `
-            Locatie: ${activityLocation}
-            Eten&Drinken: ${foodAndDrinks}
-            Beschrijving: ${activityDescription}
-            Start: ${startDate}
-            Eind: ${endDate}
-            Kosten: ${cost}`;
+        Locatie: ${activityLocation}
+        Eten&Drinken: ${foodAndDrinks}
+        Beschrijving: ${activityDescription}
+        Start: ${startDate}
+        Eind: ${endDate}
+        Kosten: ${cost}`;
 
+        // Check if Web Share API is supported
+        if (navigator.share) {
+            navigator.share({
+                title: activityTitle,
+                text: `${activityTitle}\n\n${activityDetails}`,
+                url: activityUrl
+            }).then(() => {
+                console.log('Activity shared successfully!');
+            }).catch((error) => {
+                console.error('Error sharing activity:', error);
+            });
+        } else {
+            // Fallback to copying to clipboard
             const textArea = document.createElement('textarea');
             textArea.value = `${activityTitle}\n\n${activityDetails}\n\nLink: ${activityUrl}`;
             document.body.appendChild(textArea);
@@ -102,6 +117,7 @@
             document.execCommand('copy');
             document.body.removeChild(textArea);
             alert('De activiteit beschrijving is gekopieerd naar het klembord!');
+        }
     });
         
 </script>
