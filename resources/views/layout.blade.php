@@ -9,9 +9,9 @@
 </head>
 <body>
     <!-- container -->
-     <div class="layoutContainer">
+    <div class="layoutContainer">
         <!-- navbar -->
-         <header>
+        <header>
             <nav>
                 <div class="logo">
                     <a href="/"> <image src="{{ Vite::asset('resources/images/logo_covadis_2016.png') }}" alt="logo"></a>
@@ -22,18 +22,21 @@
                     <li>Item3</li>
                 </ul>
             </nav>
-         </header>
+        </header>
 
-         @yield('content')
+        <!-- Main content goes here -->
+        <main>
+            @yield('content')
+        </main>
+
         <!-- Footer -->
-         <footer>
+        <footer>
             <ul>
                 <li>Item1</li>
                 <li>Item2</li>
                 <li>Item3</li>
             </ul>
-         </footer>
-        
+        </footer>
     </div>
 
 </body>
