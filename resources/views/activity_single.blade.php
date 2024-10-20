@@ -1,3 +1,5 @@
+@extends('layout')
+@section('content')
 <div class="container">
     @vite(['resources/css/activity.css'])
     <!-- Activity Details Section -->
@@ -79,6 +81,7 @@
         <button type="submit" class="btn btn-danger">Activiteit verwijderen</button>
     </form>
 </div>
+@endsection
 
 <!-- Inline script to toggle the registration form visibility -->
 <script>
