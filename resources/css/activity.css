@@ -234,6 +234,19 @@ ul li {
 
 /* Detail Info Styling */
 
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.activity-image {
+    max-width: 50%;
+    height: auto;
+    display: block;
+}
+
 .detailInfo {
     background-color: #f8f9fa;
     padding: 30px;
