@@ -89,12 +89,7 @@
 </div>
 @endsection
 
-<!-- Inline script to toggle the registration form visibility -->
 <script>
-    document.getElementById('showRegistrationFormBtn').addEventListener('click', function() {
-        var form = document.getElementById('registrationForm');
-        form.style.display = form.style.display === 'none' ? 'block' : 'none';
-    });
 
     // Script to make sharing a link with text functional
     document.getElementById('shareBtn').addEventListener('click', function() {

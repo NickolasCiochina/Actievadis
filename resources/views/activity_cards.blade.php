@@ -115,22 +115,26 @@
 <!-- Inline Script to toggle the form visibility -->
 
 <script>
-    document.getElementById('showFormBtn').addEventListener('click', function() {
-        var form = document.getElementById('activityForm');
-        form.style.display = form.style.display === 'none' ? 'block' : 'none';
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+        // Toggle the visibility of the activity form
+        document.getElementById('showFormBtn').addEventListener('click', function() {
+            var form = document.getElementById('activityForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        });
 
-    document.querySelector('form').addEventListener('submit', function(event) {
-        const startDate = new Date(document.querySelector('input[name="start_date"]').value);
-        const endDate = new Date(document.querySelector('input[name="end_date"]').value);
-        const now = new Date();
+        // Validate the start and end dates on form submission
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const startDate = new Date(document.querySelector('input[name="start_date"]').value);
+            const endDate = new Date(document.querySelector('input[name="end_date"]').value);
+            const now = new Date();
 
-        if (startDate < now) {
-            event.preventDefault();
-            alert('De startdatum mag niet in het verleden liggen.');
-        } else if (startDate >= endDate) {
-            event.preventDefault();
-            alert('De startdatum moet minimaal 1 minuut vóór de einddatum liggen.');
-        }
+            if (startDate < now) {
+                event.preventDefault();
+                alert('De startdatum mag niet in het verleden liggen.');
+            } else if (startDate >= endDate) {
+                event.preventDefault();
+                alert('De startdatum moet minimaal 1 minuut vóór de einddatum liggen.');
+            }
+        });
     });
 </script>
