@@ -17,9 +17,9 @@
                     <a href="/"> <image src="{{ Vite::asset('resources/images/logo_covadis_2016.png') }}" alt="logo"></a>
                 </div>
                 <ul>
-                    <li>Home</li>
-                    <li>Activiteiten</li>
-                    <li>Item3</li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/covadis-activities">Covadis Activities</a></li>
+                    <li><a href="/ended-activities">Ended Activities</a></li>
                 </ul>
             </nav>
         </header>
@@ -32,9 +32,9 @@
         <!-- Footer -->
         <footer>
             <ul>
-                <li>Item1</li>
-                <li>Item2</li>
-                <li>Item3</li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/covadis-activities">Covadis Activities</a></li>
+                <li><a href="/ended-activities">Ended Activities</a></li>
             </ul>
         </footer>
     </div>

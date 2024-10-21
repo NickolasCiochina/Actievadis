@@ -16,9 +16,38 @@ body {
     padding: 0 20px 20px 20px;
 }
 
+/* Footer and Header button styling */
+.layoutContainer footer ul li a, 
+.layoutContainer header ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #f5af00; /* Orange text */
+    background-color: #fff; /* White background */
+    border: 2px solid #f5af00;
+    border-radius: 5px;
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+/* Hover effect for buttons */
+.layoutContainer footer ul li a:hover, 
+.layoutContainer header ul li a:hover {
+    color: #fff; /* White text on hover */
+    background-color: #f5af00; /* Orange background on hover */
+}
+
+/* Ensure li elements don't have background */
+.layoutContainer footer ul li, 
+.layoutContainer header ul li {
+    background-color: transparent; /* No background for list items */
+}
+
+
 h1, h2 {
     text-align: center;
-    margin-bottom: 30px;
+    margin: 30px 0;
+
 }
 
 .btn {

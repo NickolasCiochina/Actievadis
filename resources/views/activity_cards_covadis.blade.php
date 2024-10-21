@@ -1,3 +1,5 @@
+@extends('layout')
+@section('content')
 <div class="container">
     @vite(['resources/css/activity.css'])
     <div class="row">
@@ -102,6 +104,7 @@
         @endif
     </div>
 </div>
+@endsection
 
 <script>
     document.getElementById('showFormBtn').addEventListener('click', function() {
