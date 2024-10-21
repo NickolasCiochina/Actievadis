@@ -3,7 +3,7 @@
 <div class="container">
     @vite(['resources/css/activity.css'])
     <h1>Inloggen</h1>
-    <form action="{{ route('user.login') }}" method="POST">
+    <form action="{{ route('user.login') }}" method="POST" class="logregForm">
         @csrf
         <div class="form-group">
             <label for="email">Email:</label>

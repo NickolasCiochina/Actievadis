@@ -17,7 +17,7 @@ body {
 }
 
 /* Footer and Header button styling */
-.layoutContainer footer ul li a, 
+.layoutContainer footer ul li a,
 .layoutContainer header ul li a {
     display: inline-block;
     padding: 10px 20px;
@@ -31,14 +31,14 @@ body {
 }
 
 /* Hover effect for buttons */
-.layoutContainer footer ul li a:hover, 
+.layoutContainer footer ul li a:hover,
 .layoutContainer header ul li a:hover {
     color: #fff; /* White text on hover */
     background-color: #f5af00; /* Orange background on hover */
 }
 
 /* Ensure li elements don't have background */
-.layoutContainer footer ul li, 
+.layoutContainer footer ul li,
 .layoutContainer header ul li {
     background-color: transparent; /* No background for list items */
 }
@@ -209,7 +209,8 @@ ul li {
 }
 
 /* Shared form container styling */
-#activityForm, #registrationForm {
+#activityForm, #registrationForm,
+.logregForm {
     background-color: #f8f9fa;
     padding: 30px;
     border-radius: 10px;
@@ -217,7 +218,8 @@ ul li {
     margin-top: 20px;
 }
 
-#activityForm h2, #registrationForm h2 {
+#activityForm h2, #registrationForm h2,
+.logregForm h2 {
     font-size: 1.8rem;
     color: #333;
     margin-bottom: 20px;
@@ -225,11 +227,13 @@ ul li {
     font-weight: bold;
 }
 
-#activityForm .form-group, #registrationForm {
+#activityForm .form-group, #registrationForm,
+.logregForm .form-group {
     margin-bottom: 20px;
 }
 
-#activityForm label, #registrationForm {
+#activityForm label, #registrationForm,
+.logregForm label {
     font-size: 1.1rem;
     font-weight: 600;
     color: #555;
@@ -237,7 +241,8 @@ ul li {
 }
 
 #activityForm input, #activityForm textarea, #activityForm select,
-#registrationForm input, #registrationForm textarea, #registrationForm select {
+#registrationForm input, #registrationForm textarea, #registrationForm select,
+.logregForm input, .logregForm textarea, .logregForm select {
     font-size: 1rem;
     padding: 10px;
     border: 1px solid #ced4da;
@@ -246,14 +251,51 @@ ul li {
     box-sizing: border-box;
 }
 
+.logregForm input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    display: flex;
+    width: 35px;
+    height: 30px;
+    align-content: center;
+    justify-content: center;
+    font-size: 2rem;
+    padding: 0.1rem;
+    border: 1px solid #f5af00;
+    border-radius: 0.5rem;
+  }
+
+
+.logregForm input[type="checkbox"]::before {
+    content: "";
+    width: 2rem;
+    height: 1.6rem;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+    transform: scale(0);
+    background-color: #f5af00;
+  }
+
+  .logregForm input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+
+  .logregForm input[type="checkbox"]:hover {
+    color: #c28b00;
+  }
+
+
+
+
 #activityForm input:focus, #activityForm textarea:focus, #activityForm select:focus,
-#registrationForm input:focus, #registrationForm textarea:focus, #registrationForm select:focus {
+#registrationForm input:focus, #registrationForm textarea:focus, #registrationForm select:focus,
+.logregForm input:focus, .logregForm textarea:focus, .logregForm select:focus {
     border-color: #f5af00;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
     outline: none;
 }
 
-#activityForm button, #registrationForm button {
+#activityForm button, #registrationForm button,
+ .logregForm button {
     background-color: #f5af00;
     color: #fff;
     font-size: 1rem;
@@ -264,7 +306,8 @@ ul li {
     transition: background-color 0.3s ease;
 }
 
-#activityForm button:hover, #registrationForm button:hover {
+#activityForm button:hover, #registrationForm button:hover,
+ .logregForm button:hover {
     background-color: #d49800;
 }
 
