@@ -81,11 +81,11 @@
                     </form>
                 </div>
             @else
-                <p class="alert alert-warning">Het maximum aantal deelnemers voor deze activiteit is bereikt. Inschrijven is
+                <p class="alert alert-warning">Het maximum aantal deelnemers voor deze activiteit is bereikt. Inschrijven en sharen zijn
                     niet meer mogelijk.</p>
             @endif
         @else
-            <p class="alert alert-warning">Deze activiteit is afgelopen en inschrijven is niet meer mogelijk.</p>
+            <p class="alert alert-warning">Deze activiteit is afgelopen. Inschrijven en sharen is niet meer mogelijk.</p>
         @endif
 
         <!-- List of registered participants -->

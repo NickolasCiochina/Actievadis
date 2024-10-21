@@ -15,7 +15,7 @@
             <nav>
                 <div class="logo">
                     <a href="/"> 
-                        <image src="{{ Vite::asset('resources/images/logo_covadis_2016.png') }}" alt="logo">
+                        <img src="{{ Vite::asset('resources/images/logo_covadis_2016.png') }}" alt="logo">
                     </a>
                 </div>
                 <ul>
@@ -39,6 +39,19 @@
             </nav>
         </header>
 
+        <!-- Flash messages -->
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <!-- Main content goes here -->
         <main>
             @yield('content')
@@ -53,6 +66,5 @@
             </ul>
         </footer>
     </div>
-
 </body>
 </html>

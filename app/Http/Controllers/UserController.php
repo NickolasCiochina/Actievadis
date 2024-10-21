@@ -22,28 +22,23 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'is_covadis_member' => 'nullable|boolean',
+            'password' => 'required|string|min:8|confirmed',
+            'is_covadis_member' => 'sometimes|boolean',
         ]);
-
-        // Create the user
-        $user = User::create([
-            'name' => $validated['name'],
-            'surname' => $validated['surname'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-            'is_covadis_member' => $request->has('is_covadis_member') ? 1 : 0,
+    
+        User::create([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'is_covadis_member' => $request->has('is_covadis_member'),
         ]);
-
-        // Log the user in
-        Auth::login($user);
-
-        // Redirect with success message
-        return redirect()->route('activity_cards')->with('success', 'Je bent succesvol geregistreerd.');
+    
+        return redirect()->route('user.login')->with('success', 'Je bent succesvol geregistreerd.');
     }
 
 

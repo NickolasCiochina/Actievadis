@@ -30,15 +30,20 @@ Route::delete('/activity/{activity}', [ActivityController::class, 'destroy'])->n
 Route::get('/covadis-activities', [ActivityController::class, 'covadisActivities'])->name('activity_cards_covadis');
 Route::get('/ended-activities', [ActivityController::class, 'endedActivities'])->name('activities.ended');
 
+Route::get('/covadis-activities', [ActivityController::class, 'covadisActivities'])
+    ->middleware(['auth', 'covadis'])
+    ->name('activity_cards_covadis');
+
 Route::delete('/activity/{activity}/{registration}/unregister', [ActivityController::class, 'unregister'])->name('activity.unregister');
 
 // User registration routes
 Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('user.register');
-Route::post('/register', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'register'])->name('user.register.submit');
 
 // User login routes
 Route::get('/login', [UserController::class, 'showLoginForm'])->name('user.login');
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/login', [UserController::class, 'login'])->name('user.login.submit');
 
 // User logout route
 Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
+
