@@ -13,20 +13,22 @@ class ActivityController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $now = Carbon::now(); // Get the current time
+{
+    $now = Carbon::now(); // Get the current time
 
-        // Fetch activities where the `end_date` is later than the current time
-        $activities = Activity::where('end_date', '>', $now)->orderBy('end_date', 'asc')->get();
+    // Fetch activities where the `end_date` is later than the current time and it's not for Covadis members
+    $activities = Activity::where('end_date', '>', $now)
+                          ->where('is_for_covadis_members', 0)
+                          ->orderBy('end_date', 'asc')
+                          ->get();
 
-        // Check if activities are being retrieved
-        if ($activities->isEmpty()) {
-            return view('activity_cards', ['activities' => $activities, 'noActivitiesMessage' => 'Er zijn momenteel geen activiteiten beschikbaar.']);
-        }
-
-        return view('activity_cards', compact('activities'));
+    // Check if activities are being retrieved
+    if ($activities->isEmpty()) {
+        return view('activity_cards', ['activities' => $activities, 'noActivitiesMessage' => 'Er zijn momenteel geen activiteiten beschikbaar.']);
     }
 
+    return view('activity_cards', compact('activities'));
+}
 
     public function covadisActivities()
     {
