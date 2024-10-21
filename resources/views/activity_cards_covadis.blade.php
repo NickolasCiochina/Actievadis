@@ -81,25 +81,23 @@
             </div>
         @else
             @foreach ($activities as $activity)
-                <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4">
+                <a href="{{ route('activity.show', $activity->id) }}" class="cardLink">
                     <div class="card h-100 shadow-sm">
+                        @if ($activity->image)
+                        <img src="{{ asset('storage/' . $activity->image) }}" class="card-img-top" alt="{{ $activity->name }}" style="max-height: 200px; object-fit: cover;">
+                        @else
+                        <div class="card-img-top card-placeholder" style="height: 200px; background-color: #f0f0f0;"></div>
+                        @endif
                         <div class="card-body">
-                            <h5 class="card-title">
-                                <a href="{{ route('activity.show', $activity->id) }}">
-                                    {{ $activity->name }}
-                                </a>
-                            </h5>
-                            @if ($activity->image)
-                                <img src="{{ asset('storage/' . $activity->image) }}" class="card-img-top"
-                                    alt="{{ $activity->name }}" style="max-height: 200px; object-fit: cover;">
-                            @endif
+                            <h5 class="card-title">{{ $activity->name }}</h5>
                             <p class="card-text">
-                                {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }}
-                                uur
+                                {{ \Carbon\Carbon::parse($activity->start_date)->locale('nl')->isoFormat('D MMMM YYYY, HH:mm') }} uur
                             </p>
                         </div>
                     </div>
-                </div>
+                </a>
+            </div>            
             @endforeach
         @endif
     </div>
@@ -107,6 +105,7 @@
 @endsection
 
 <script>
+   document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('showFormBtn').addEventListener('click', function() {
         var form = document.getElementById('activityForm');
         form.style.display = form.style.display === 'none' ? 'block' : 'none';
@@ -125,4 +124,5 @@
             alert('De startdatum moet minimaal 1 minuut vóór de einddatum liggen.');
         }
     });
+});
 </script>

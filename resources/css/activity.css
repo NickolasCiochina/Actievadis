@@ -43,13 +43,23 @@ body {
     background-color: transparent; /* No background for list items */
 }
 
-
-h1, h2 {
-    text-align: center;
-    margin: 30px 0;
-
+/* General link styling to avoid blue underline */
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
+a:hover {
+    color: #f5af00;
+}
+
+/* Headings */
+h1, h2 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Buttons */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -63,7 +73,7 @@ h1, h2 {
 }
 
 .btn:hover {
-    background-color: #f5af00;
+    background-color: #d49800;
 }
 
 /* Card Styling */
@@ -113,18 +123,22 @@ h1, h2 {
     transition: color 0.3s;
 }
 
+.card-title a:hover {
+    color: #f5af00;
+}
+
 .card-text {
     font-size: 1rem;
     color: #666;
 }
 
-.cardLink a, h5, .card-img-top, .card-body{
+.cardLink a, h5, .card-img-top, .card-body {
     color: black;
     text-decoration: none !important;
     cursor: pointer;
 }
 
-.cardlink a:hover, h5:hover{
+.cardLink a:hover, h5:hover {
     color: #f5af00;
     transition: color 0.3s;
 }
@@ -194,8 +208,7 @@ ul li {
     border-radius: 5px;
 }
 
-/* activity form*/
-
+/* Shared form container styling */
 #activityForm, #registrationForm {
     background-color: #f8f9fa;
     padding: 30px;
@@ -212,11 +225,11 @@ ul li {
     font-weight: bold;
 }
 
-#activityForm .form-group, #registrationForm  {
+#activityForm .form-group, #registrationForm {
     margin-bottom: 20px;
 }
 
-#activityForm label, #registrationForm  {
+#activityForm label, #registrationForm {
     font-size: 1.1rem;
     font-weight: 600;
     color: #555;
@@ -224,7 +237,7 @@ ul li {
 }
 
 #activityForm input, #activityForm textarea, #activityForm select,
- #registrationForm input, #registrationForm textarea, #registrationForm select {
+#registrationForm input, #registrationForm textarea, #registrationForm select {
     font-size: 1rem;
     padding: 10px;
     border: 1px solid #ced4da;
@@ -240,7 +253,7 @@ ul li {
     outline: none;
 }
 
-#activityForm button, #registrationForm button  {
+#activityForm button, #registrationForm button {
     background-color: #f5af00;
     color: #fff;
     font-size: 1rem;
@@ -262,7 +275,6 @@ ul li {
 }
 
 /* Detail Info Styling */
-
 .image-container {
     display: flex;
     justify-content: center;
@@ -324,4 +336,3 @@ ul li {
         font-size: 1rem;
     }
 }
-

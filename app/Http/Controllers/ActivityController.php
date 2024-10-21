@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Registration;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ActivityController extends Controller
 {
@@ -13,7 +14,10 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = Activity::all();
+        $now = Carbon::now(); // Get the current time
+
+        // Fetch activities where the `end_date` is later than the current time
+        $activities = Activity::where('end_date', '>', $now)->orderBy('end_date', 'asc')->get();
 
         // Check if activities are being retrieved
         if ($activities->isEmpty()) {
@@ -22,6 +26,7 @@ class ActivityController extends Controller
 
         return view('activity_cards', compact('activities'));
     }
+
 
     public function covadisActivities()
     {
@@ -36,6 +41,32 @@ class ActivityController extends Controller
         return view('activity_cards_covadis', compact('activities'));
     }
 
+    public function endedActivities()
+    {
+        // Get the current time
+        $now = Carbon::now();
+
+        // Fetch activities that have an `end_date` before the current time
+        $endedActivities = Activity::where('end_date', '<', $now)->orderBy('end_date', 'desc')->get();
+
+        // Check if there are any ended activities
+        if ($endedActivities->isEmpty()) {
+            return view('ended_activities', ['endedActivities' => $endedActivities, 'noActivitiesMessage' => 'Er zijn momenteel geen afgelopen activiteiten.']);
+        }
+
+        return view('ended_activities', compact('endedActivities'));
+    }
+
+    public function unregister(Activity $activity, Registration $registration)
+{
+    // Ensure the logged-in user is trying to unregister themselves
+    if (auth()->check() && auth()->user()->name == $registration->name && auth()->user()->surname == $registration->surname) {
+        $registration->delete();
+        return redirect()->route('activity.show', $activity)->with('success', 'Je bent succesvol uitgeschreven voor deze activiteit.');
+    }
+
+    return redirect()->route('activity.show', $activity)->with('error', 'Je kunt je alleen uitschrijven voor activiteiten waarvoor je bent geregistreerd.');
+}
 
     /**
      * Show the form for creating a new resource.
